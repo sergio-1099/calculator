@@ -1,11 +1,18 @@
 body {
+    margin: 0;
     padding: 0 20%;
+}
+
+.calc-screen {
+    width: 100vh;
+    height: 15vh;
+    background-color: #eee;
 }
 
 .button-container {
     display: grid;
     width: 100vh;
-    height: 80vh;
+    height: 75vh;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
 }
