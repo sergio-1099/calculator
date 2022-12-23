@@ -1,32 +1,134 @@
 body {
     margin: 0;
     padding: 0 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+}
+
+.header {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
 }
 
 .calc-screen {
-    width: 100vh;
-    height: 15vh;
-    background-color: #eee;
+    width: 100%;
+    height: 15%;
+    background-color: #f5e2bf;
+    display: flex;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    background-color: #f5e2bf;
+    border: solid 1px #000;
 }
 
 .button-container {
     display: grid;
-    width: 100vh;
-    height: 75vh;
+    width: 100%;
+    height: 75%;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    flex: 1;
+}
+
+.button {
+    border: solid 1px #000;
+    border-radius: 2px;
+    font-weight: bold;
+    background-color: #f5e2bf;
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fce1ae;
+}
+
+.calc-clear {
+    background-color: #4a4747;
+    color: #fff;
+}
+
+.calc-clear:hover {
+    background-color: #eee;
+    color: #4a4747;
 }
 
 .calc-add {
     grid-column: 4;
     grid-row: 2/4; 
+    background-color: #d98e48;
+    color: #fff;
 }
 
-.calc-0 {
-    grid-column: 1/3;
+.calc-add:hover {
+    background-color: #eee;
+    color: #d98e48;
+}
+
+.calc-subtract {
+    background-color: #770985;
+    color: #fff;
+}
+
+.calc-subtract:hover {
+    background-color: #eee;
+    color: #770985;
+}
+
+.calc-multiply {
+    background-color: #3a5e08;
+    color: #fff;
+}
+
+.calc-multiply:hover {
+    background-color: #eee;
+    color: #3a5e08
+}
+
+.calc-divide {
+    background-color: #805306;
+    color: #fff;
+}
+
+.calc-divide:hover {
+    background-color: #eee;
+    color: #805306;
 }
 
 .calc-equals {
     grid-column: 4;
     grid-row: 4/6;
+    background-color: #487bd9;
+    color: #fff;
+}
+
+.calc-equals:hover {
+    background-color: #eee;
+    color: #487bd9;
+}
+
+.calc-0 {
+    grid-column: 1/3;
+    background-color: #d94848;
+    color: #fff;
+}
+
+.calc-0:hover {
+    background-color: #eee;
+    color: #d94848;
 }
