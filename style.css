@@ -8,7 +8,6 @@ body {
     padding: 0 20%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     font-family: 'Lato', sans-serif;
     background-image: linear-gradient(to bottom right, #fff3d4, #dbc386);
@@ -16,8 +15,8 @@ body {
 }
 
 .header {
-    margin: 10px;
-    font-size: 20px;
+    margin: 3rem;
+    font-size: 50px;
 }
 
 .calculator-container {
@@ -57,6 +56,7 @@ body {
     border: solid 1px #000;
     border-radius: 2px;
     font-weight: bold;
+    font-size: 40px;
     background-color: #f5e2bf;
 }
 
