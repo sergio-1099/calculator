@@ -52,7 +52,6 @@ function checkForSecondOperators(expression) {
 
 function solveOperation(expression) {
     let number;
-    let operatorArray = ['+', '-', 'x', '/'];
     let operatorIndex = findOperators(expression);
     if (operatorIndex.length == 1) {
         expressionArray = [expression.substring(0, operatorIndex[0].Index), operatorIndex[0].Operator, 
@@ -64,26 +63,14 @@ function solveOperation(expression) {
         return number;
     }
     for (let i = 0; i < operatorIndex.length; i++) {
-        /*
-        if (i < operatorIndex.length - 1) {
-            expressionArray = [expression.substring(0, operatorIndex[i].Index), operatorIndex[i].Operator, 
-                expression.substring(operatorIndex[i].Index + 1, operatorIndex[i+1].Index)]
-        }
-        else {
-            expressionArray = [expression.substring(0, operatorIndex[i].Index), operatorIndex[i].Operator, 
-                expression.substring(operatorIndex[i].Index + 1)];
-        }
-        */
         if (i == 0) {
             expressionArray = [expression.substring(0, operatorIndex[i].Index), operatorIndex[i].Operator, 
                 expression.substring(operatorIndex[i].Index + 1, operatorIndex[i+1].Index)]
         }
-
         else if (i == operatorIndex.length - 1) {
             expressionArray = [number.toString(), operatorIndex[i].Operator, 
                 expression.substring(operatorIndex[i].Index + 1)];
         }
-
         else {
             expressionArray = [number.toString(), operatorIndex[i].Operator, expression.substring(operatorIndex[i].Index + 1, operatorIndex[i+1].Index)];
         }
@@ -96,11 +83,6 @@ function solveOperation(expression) {
         else if (operatorIndex[i].Operator == '/') number = divideExp(expressionArray);
 
         console.log(number);
-
-        //expressionArray[i+1] = number;
-        //console.log(expressionArray);
-        //expression = number.toString() + expression.substring(operatorIndex[i+1].Index);
-        //console.log(expression);
     }
     return number;
 }
