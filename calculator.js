@@ -37,21 +37,79 @@ function checkOperator(expression) {
 }
 
 function solveOperation(expression) {
-    let operatorArray = ['+', '-', 'X', '/'];
-    let expressionArray = [];
     let number;
+    let operatorArray = ['+', '-', 'X', '/'];
+    let operatorIndex = findOperators(expression);
+    if (operatorIndex.length == 1) {
+        expressionArray = [expression.substring(0, operatorIndex[0].Index), operatorIndex[0].Operator, 
+        expression.substring(operatorIndex[0].Index + 1)];
+        if (operatorIndex[0].Operator == '+') number = sumExp(expressionArray);
+        else if (operatorIndex[0].Operator == '-') number = subtractExp(expressionArray);
+        else if (operatorIndex[0].Operator == 'X') number = multiplyExp(expressionArray);
+        else if (operatorIndex[0].Operator == '/') number = divideExp(expressionArray);
+        return number;
+    }
+    for (let i = 0; i < operatorIndex.length; i++) {
+        /*
+        if (i < operatorIndex.length - 1) {
+            expressionArray = [expression.substring(0, operatorIndex[i].Index), operatorIndex[i].Operator, 
+                expression.substring(operatorIndex[i].Index + 1, operatorIndex[i+1].Index)]
+        }
+        else {
+            expressionArray = [expression.substring(0, operatorIndex[i].Index), operatorIndex[i].Operator, 
+                expression.substring(operatorIndex[i].Index + 1)];
+        }
+        */
+        if (i == 0) {
+            expressionArray = [expression.substring(0, operatorIndex[i].Index), operatorIndex[i].Operator, 
+                expression.substring(operatorIndex[i].Index + 1, operatorIndex[i+1].Index)]
+        }
+
+        else if (i == operatorIndex.length - 1) {
+            expressionArray = [number.toString(), operatorIndex[i].Operator, 
+                expression.substring(operatorIndex[i].Index + 1)];
+        }
+
+        else {
+            expressionArray = [number.toString(), operatorIndex[i].Operator, expression.substring(operatorIndex[i].Index + 1, operatorIndex[i+1].Index)];
+        }
+
+        console.log(expressionArray);
+        
+        if (operatorIndex[i].Operator == '+') number = sumExp(expressionArray);
+        else if (operatorIndex[i].Operator == '-') number = subtractExp(expressionArray);
+        else if (operatorIndex[i].Operator == 'X') number = multiplyExp(expressionArray);
+        else if (operatorIndex[i].Operator == '/') number = divideExp(expressionArray);
+
+        console.log(number);
+
+        //expressionArray[i+1] = number;
+        //console.log(expressionArray);
+        //expression = number.toString() + expression.substring(operatorIndex[i+1].Index);
+        //console.log(expression);
+    }
+    return number;
+}
+
+function findOperators(expression) {
+    let operatorArray = ['+', '-', 'X', '/'];
+    let operatorIndex = [];
+    let index = 0;
     for (let operator of operatorArray) {
         for (let i = 0; i < expression.length; i++) {
             if (operator == expression.charAt(i)) {
-                expressionArray = [expression.substring(0, i), operator, expression.substring(i+1)];
-                if (operator == '+') number = sumExp(expressionArray);
-                else if (operator == '-') number = subtractExp(expressionArray);
-                else if (operator == 'X') number = multiplyExp(expressionArray);
-                else if (operator == '/') number = divideExp(expressionArray);
+                object = {
+                    Operator: operator,
+                    Index: i,
+                };
+                operatorIndex.push(object);
+                index++;
             }
         }
     }
-    return number;
+    console.log(operatorIndex);
+    operatorIndex = operatorIndex.sort((a, b) => a.Index > b.Index ? 1 : -1);
+    return operatorIndex;
 }
 
 function sumExp(expressionArray) {
