@@ -14,12 +14,6 @@ body {
     background-repeat: no-repeat;
 }
 
-@media (max-width: 1000px) {
-    body {
-        padding: 0;
-    }
-}
-
 .header {
     margin: 3rem;
     font-size: 50px;
@@ -149,4 +143,16 @@ body {
 .calc-0:hover {
     background-color: #eee;
     color: #d94848;
+}
+
+@media (max-width: 1000px) {
+    body {
+        padding: 0;
+    }
+}
+
+@media (max-height: 700px) {
+    .header {
+        margin: 1rem;
+    }
 }
