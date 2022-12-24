@@ -146,5 +146,6 @@ function multiplyExp(expressionArray) {
 function divideExp(expressionArray) {
     let firstOperand = +expressionArray[0];
     let secondOperand = +expressionArray[2];
+    if (secondOperand == 0) return "Can't divide by zero!";
     return firstOperand / secondOperand;
 }
