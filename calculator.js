@@ -30,7 +30,7 @@ equalsButton.addEventListener('click', function () {
     calcScreen.textContent = expression});
 
 function checkOperator(expression) {
-    let operatorArray = ['+', '-', 'X', '/'];
+    let operatorArray = ['+', '-', 'x', '/'];
     for (const element of operatorArray) {
         if (expression.charAt(expression.length - 1) == element) return true;
     }
@@ -38,14 +38,14 @@ function checkOperator(expression) {
 
 function solveOperation(expression) {
     let number;
-    let operatorArray = ['+', '-', 'X', '/'];
+    let operatorArray = ['+', '-', 'x', '/'];
     let operatorIndex = findOperators(expression);
     if (operatorIndex.length == 1) {
         expressionArray = [expression.substring(0, operatorIndex[0].Index), operatorIndex[0].Operator, 
         expression.substring(operatorIndex[0].Index + 1)];
         if (operatorIndex[0].Operator == '+') number = sumExp(expressionArray);
         else if (operatorIndex[0].Operator == '-') number = subtractExp(expressionArray);
-        else if (operatorIndex[0].Operator == 'X') number = multiplyExp(expressionArray);
+        else if (operatorIndex[0].Operator == 'x') number = multiplyExp(expressionArray);
         else if (operatorIndex[0].Operator == '/') number = divideExp(expressionArray);
         return number;
     }
@@ -78,7 +78,7 @@ function solveOperation(expression) {
         
         if (operatorIndex[i].Operator == '+') number = sumExp(expressionArray);
         else if (operatorIndex[i].Operator == '-') number = subtractExp(expressionArray);
-        else if (operatorIndex[i].Operator == 'X') number = multiplyExp(expressionArray);
+        else if (operatorIndex[i].Operator == 'x') number = multiplyExp(expressionArray);
         else if (operatorIndex[i].Operator == '/') number = divideExp(expressionArray);
 
         console.log(number);
@@ -92,7 +92,7 @@ function solveOperation(expression) {
 }
 
 function findOperators(expression) {
-    let operatorArray = ['+', '-', 'X', '/'];
+    let operatorArray = ['+', '-', 'x', '/'];
     let operatorIndex = [];
     let index = 0;
     for (let operator of operatorArray) {
