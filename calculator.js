@@ -8,6 +8,11 @@ const backspace = document.querySelector('.calc-back');
 let expression = '';
 
 document.addEventListener('keydown', (e) => {
+    if (checkOperator(expression)) {
+        if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
+            return;
+        }
+    }
     if (e.key == 'Shift') return;
     if (e.key == 'Enter') {
         expression = solveOperation(expression).toString();
