@@ -47,6 +47,11 @@ body {
     height: 100%;
     background-color: #f5e2bf;
     border: solid 1px #000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    font-size: 40px;
 }
 
 .button-container {
