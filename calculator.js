@@ -13,6 +13,12 @@ document.addEventListener('keydown', (e) => {
             return;
         }
     }
+    if (checkForSecondOperators(expression)) {
+        if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
+            expression = solveOperation(expression);
+            calcScreen.textContent = expression;
+        }
+    }
     if (e.key == 'Shift') return;
     if (e.key == 'Enter') {
         expression = solveOperation(expression).toString();
