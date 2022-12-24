@@ -1,8 +1,10 @@
 const numberButtons = document.querySelectorAll('.operand');
 const operatorButtons = document.querySelectorAll('.operator');
 let calcScreen = document.querySelector('.screen');
+const clearButton = document.querySelector('.calc-clear');
 let expression = '';
 
+clearButton.addEventListener('click', () => calcScreen.textContent = '');
 
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
