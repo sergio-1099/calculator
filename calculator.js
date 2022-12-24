@@ -20,6 +20,9 @@ for (let i = 0; i < numberButtons.length; i++) {
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         if (checkOperator(expression)) return;
+        if (checkForSecondOperators(expression)) {
+            calcScreen.textContent = solveOperation(expression);
+        }
         expression += operatorButtons[i].textContent;
         calcScreen.textContent += operatorButtons[i].textContent;
     });
@@ -33,6 +36,17 @@ function checkOperator(expression) {
     let operatorArray = ['+', '-', 'x', '/'];
     for (const element of operatorArray) {
         if (expression.charAt(expression.length - 1) == element) return true;
+    }
+}
+
+function checkForSecondOperators(expression) {
+    let operatorArray = ['+', '-', 'x', '/'];
+    for (let operator of operatorArray) {
+        for (let i = 0; i < expression.length; i++) {
+            if (expression.charAt(i) == operator) {
+                return true;
+            }
+        }
     }
 }
 
