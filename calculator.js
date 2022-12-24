@@ -25,7 +25,9 @@ for (let i = 0; i < operatorButtons.length; i++) {
     });
 }
 
-equalsButton.addEventListener('click', function () {calcScreen.textContent = solveOperation(expression)});
+equalsButton.addEventListener('click', function () {
+    expression = solveOperation(expression).toString();
+    calcScreen.textContent = expression});
 
 function checkOperator(expression) {
     let operatorArray = ['+', '-', 'X', '/'];
