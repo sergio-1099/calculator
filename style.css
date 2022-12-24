@@ -34,7 +34,7 @@ body {
     height: 15%;
     background-color: #f5e2bf;
     display: flex;
-    align-items: center;
+    align-items: stretch;
 }
 
 .calc-back {
@@ -59,7 +59,6 @@ body {
 
 .screen {
     width: 80%;
-    height: 100%;
     background-color: #f5e2bf;
     border: solid 1px #000;
     display: flex;
