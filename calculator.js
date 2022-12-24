@@ -8,13 +8,12 @@ const backspace = document.querySelector('.calc-back');
 let expression = '';
 
 document.addEventListener('keydown', (e) => {
-    if (e.key == 'Shift')return;
     if (e.key == 'Enter') { 
         expression = solveOperation(expression).toString();
         calcScreen.textContent = expression;
         return;
     }
-    if ((e.key >= 96 || e.key <= 111)) {
+    if ((e.key >= 48 || e.key <= 57) || (e.key == 187 || e.key == 189 || e.key == 191 || e.key == 88)) {
         expression += e.key;
         calcScreen.textContent = expression;
         console.log(expression);
