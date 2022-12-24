@@ -4,7 +4,14 @@ let calcScreen = document.querySelector('.screen');
 const clearButton = document.querySelector('.calc-clear');
 const equalsButton = document.querySelector('.calc-equals');
 const decimal = document.querySelector('.calc-decimal');
+const backspace = document.querySelector('.calc-back');
 let expression = '';
+
+backspace.addEventListener('click', () => {
+    expression = expression.substring(0, expression.length - 1);
+    console.log(expression);
+    calcScreen.textContent = expression;
+});
 
 clearButton.addEventListener('click', () => {
     calcScreen.textContent = ''
@@ -29,7 +36,8 @@ for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         if (checkOperator(expression)) return;
         if (checkForSecondOperators(expression)) {
-            calcScreen.textContent = solveOperation(expression);
+            expression = solveOperation(expression);
+            calcScreen.textContent = expression;
         }
         expression += operatorButtons[i].textContent;
         calcScreen.textContent += operatorButtons[i].textContent;
