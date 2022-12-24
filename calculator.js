@@ -7,6 +7,20 @@ const decimal = document.querySelector('.calc-decimal');
 const backspace = document.querySelector('.calc-back');
 let expression = '';
 
+document.addEventListener('keydown', (e) => {
+    if (e.key == 'Shift')return;
+    if (e.key == 'Enter') { 
+        expression = solveOperation(expression).toString();
+        calcScreen.textContent = expression;
+        return;
+    }
+    if ((e.key >= 96 || e.key <= 111)) {
+        expression += e.key;
+        calcScreen.textContent = expression;
+        console.log(expression);
+    }
+});
+
 backspace.addEventListener('click', () => {
     expression = expression.substring(0, expression.length - 1);
     console.log(expression);
