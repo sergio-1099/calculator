@@ -8,32 +8,35 @@ const backspace = document.querySelector('.calc-back');
 let expression = '';
 
 document.addEventListener('keydown', (e) => {
-    if (checkOperator(expression)) {
-        if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
+    if ((e.key >= 48 || e.key <= 57) || e.key == 'x' || e.key == '/' || e.key == '-' || e.key == '+' || e.key == 'Enter' || e.key == 'Backspace'){
+        if (checkOperator(expression)) {
+            if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
+                return;
+            }
+        }
+        if (checkForSecondOperators(expression)) {
+            if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
+                expression = solveOperation(expression);
+                calcScreen.textContent = expression;
+            }
+        }
+        if (e.key == 'Shift') return;
+        if (e.key == 'Enter') {
+            expression = solveOperation(expression).toString();
+            calcScreen.textContent = expression;
             return;
         }
-    }
-    if (checkForSecondOperators(expression)) {
-        if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
-            expression = solveOperation(expression);
+        if (e.key == 'Backspace') {
+            expression = expression.substring(0, expression.length - 1);
+            console.log(expression);
             calcScreen.textContent = expression;
+            return;
         }
-    }
-    if (e.key == 'Shift') return;
-    if (e.key == 'Enter') {
-        expression = solveOperation(expression).toString();
+        expression += e.key;
         calcScreen.textContent = expression;
-        return;
-    }
-    if (e.key == 'Backspace') {
-        expression = expression.substring(0, expression.length - 1);
         console.log(expression);
-        calcScreen.textContent = expression;
-        return;
     }
-    expression += e.key;
-    calcScreen.textContent = expression;
-    console.log(expression);
+    else return;
 });
 
 backspace.addEventListener('click', () => {
