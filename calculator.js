@@ -8,7 +8,7 @@ const backspace = document.querySelector('.calc-back');
 let expression = '';
 
 document.addEventListener('keydown', (e) => {
-    if ((e.key >= 48 || e.key <= 57) || e.key == 'x' || e.key == '/' || e.key == '-' || e.key == '+' || e.key == 'Enter' || e.key == 'Backspace'){
+    if ((e.key >= 48 || e.key <= 57) || e.key == 'x' || e.key == '/' || e.key == '-' || e.key == '+' || e.key == 'Enter' || e.key == 'Backspace' || e.key == '.'){
         if (checkOperator(expression)) {
             if (e.key == '+' || e.key == '-' || e.key == 'x' || e.key == '/') {
                 return;
