@@ -1,12 +1,13 @@
 const numberButtons = document.querySelectorAll('.operand');
 const operatorButtons = document.querySelectorAll('.operator');
+let calcScreen = document.querySelector('.screen');
 let expression = '';
 
 
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         expression += numberButtons[i].textContent;
-        console.log(expression);
+        calcScreen.textContent += numberButtons[i].textContent;
     });
 }
 
@@ -14,7 +15,7 @@ for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         if (checkOperator(expression)) return;
         expression += operatorButtons[i].textContent;
-        console.log(expression);
+        calcScreen.textContent += operatorButtons[i].textContent;
     });
 }
 
