@@ -3,11 +3,19 @@ const operatorButtons = document.querySelectorAll('.operator');
 let calcScreen = document.querySelector('.screen');
 const clearButton = document.querySelector('.calc-clear');
 const equalsButton = document.querySelector('.calc-equals');
+const decimal = document.querySelector('.calc-decimal');
 let expression = '';
 
 clearButton.addEventListener('click', () => {
     calcScreen.textContent = ''
     expression = '';
+    decimal.disabled = false;
+});
+
+decimal.addEventListener('click', () => {
+    expression += decimal.textContent;
+    calcScreen.textContent += decimal.textContent;
+    decimal.disabled = true;
 });
 
 for (let i = 0; i < numberButtons.length; i++) {
@@ -25,6 +33,7 @@ for (let i = 0; i < operatorButtons.length; i++) {
         }
         expression += operatorButtons[i].textContent;
         calcScreen.textContent += operatorButtons[i].textContent;
+        decimal.disabled = false;
     });
 }
 
